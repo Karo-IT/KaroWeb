@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="ku" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>KaroWeb</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0f1214; /* charcoal */
+      --surface:#17191b;
+      --muted:#9aa3ad;
+      --text:#eef2f6;
+      --accent:#3ee0ff; /* electric blue */
+      --accent-2:#8a6cff; /* violet alternative */
+      --radius:12px;
+      --glass: rgba(255,255,255,0.03);
+      --border: rgba(255,255,255,0.06);
+      --max-width:1100px;
+    }
+
+    /* Basic reset & typography */
+    *{box-sizing:border-box}
+    html {scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: "Noto Sans Arabic", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:linear-gradient(180deg, var(--bg), #0c0d0e 60%);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding-bottom:64px;
+      direction: rtl;
+    }
+
+    /* Container */
+    .container{
+      width:90%;
+      max-width:var(--max-width);
+      margin:0 auto;
+    }
+
+    /* Header / Nav */
+    header{
+      position:sticky;
+      top:0;
+      z-index:60;
+      backdrop-filter: blur(6px);
+      background: linear-gradient(180deg, rgba(10,11,12,0.6), rgba(10,11,12,0.3));
+      border-bottom: 1px solid var(--border);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+      padding:14px 0;
+    }
+    .brand{
+      font-weight:700;
+      letter-spacing:0.2px;
+      font-size:1.05rem;
+      color:var(--text);
+    }
+
+    /* Desktop nav links */
+    nav ul{
+      display:flex;
+      gap:18px;
+      list-style:none;
+      margin:0;
+      padding:0;
+      align-items:center;
+      direction: rtl;
+    }
+    nav a{
+      color:var(--muted);
+      text-decoration:none;
+      font-weight:600;
+      font-size:0.95rem;
+      padding:8px 10px;
+      border-radius:8px;
+      transition:all 220ms ease;
+    }
+    nav a:hover, nav a:focus{
+      color:var(--text);
+      background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      outline:none;
+      box-shadow: 0 4px 18px rgba(62,224,255,0.06);
+    }
+    .cta-small{
+      display:inline-block;
+      padding:8px 12px;
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:#071017;
+      font-weight:700;
+      border-radius:10px;
+      box-shadow: 0 6px 22px rgba(58,200,255,0.12);
+      text-decoration:none;
+      font-size:.92rem;
+    }
+
+    /* Mobile nav toggle */
+    .mobile-toggle{
+      display:none;
+      background:none;
+      border:0;
+      color:var(--text);
+      font-size:1.2rem;
+    }
+
+    /* Hero */
+    .hero{
+      padding:68px 0 42px;
+      display:grid;
+      grid-template-columns:1fr;
+      gap:28px;
+      align-items:center;
+      text-align:right;
+    }
+    .hero-inner{
+      display:flex;
+      flex-direction:column;
+      gap:20px;
+      align-items:flex-start;
+    }
+    h1{
+      margin:0;
+      font-size:clamp(1.8rem, 4.6vw, 2.6rem);
+      line-height:1.02;
+      letter-spacing:-0.6px;
+      color:var(--text);
+      font-weight:700;
+    }
+    .sub{
+      margin:0;
+      color:var(--muted);
+      font-size:1.02rem;
+      max-width:62ch;
+    }
+    .hero-actions{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      margin-top:6px;
+      flex-wrap:wrap;
+      justify-content:flex-start;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:14px 18px;
+      border-radius:12px;
+      font-weight:700;
+      cursor:pointer;
+      border:1px solid transparent;
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:#071017;
+      text-decoration:none;
+      transition:transform 200ms ease, box-shadow 200ms ease;
+      box-shadow: 0 10px 30px rgba(58,200,255,0.14);
+    }
+    .btn.secondary{
+      background:transparent;
+      color:var(--text);
+      border:1px solid var(--border);
+      box-shadow:none;
+    }
+    .btn:active{transform:translateY(1px)}
+    .btn:hover{transform:translateY(-3px)}
+
+    /* Sections */
+    section{
+      padding:28px 0 48px;
+      border-radius: var(--radius);
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
+      border: 1px solid var(--border);
+      padding:20px;
+      border-radius:14px;
+      box-shadow: 0 8px 30px rgba(2,6,8,0.35);
+    }
+
+    /* About */
+    .about{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:18px;
+    }
+    .about p{
+      margin:0;
+      color:var(--muted);
+      font-size:1rem;
+      text-align:right;
+    }
+
+    /* Skills matrix */
+    .skills{
+      display:grid;
+      gap:18px;
+      grid-template-columns:repeat(2, 1fr);
+    }
+    .skill-column h3{
+      margin:0 0 10px 0;
+      color:var(--text);
+      font-size:1.05rem;
+      text-align:right;
+    }
+    .skill-list{
+      display:grid;
+      gap:8px;
+    }
+    .skill{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      padding:10px 12px;
+      border-radius:10px;
+      background:rgba(255,255,255,0.012);
+      border:1px solid rgba(255,255,255,0.02);
+      color:var(--muted);
+      font-weight:600;
+      font-size:0.95rem;
+      transition:transform 180ms ease, box-shadow 180ms ease;
+      justify-content:space-between;
+    }
+    .skill::before{
+      content:'•';
+      color:var(--accent);
+      font-weight:900;
+      margin-left:2px;
+      margin-right:4px;
+      transform:translateY(-1px);
+    }
+    .skill:hover{transform:translateY(-4px); box-shadow: 0 8px 20px rgba(62,224,255,0.06)}
+
+    /* Portfolio */
+    .portfolio-grid{
+      display:grid;
+      gap:16px;
+      grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+      align-items:stretch;
+    }
+    .proj{
+      min-height:160px;
+      border-radius:12px;
+      overflow:hidden;
+      position:relative;
+      display:flex;
+      align-items:flex-end;
+      padding:14px;
+      color:var(--text);
+      text-decoration:none;
+      border:1px solid rgba(255,255,255,0.04);
+      transition:transform 240ms cubic-bezier(.2,.9,.3,1), box-shadow 240ms ease;
+      background:linear-gradient(135deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
+      text-align:right;
+    }
+    .proj .meta{
+      z-index:2;
+      backdrop-filter: blur(4px);
+      background: linear-gradient(90deg, rgba(0,0,0,0.28), rgba(0,0,0,0.18));
+      padding:8px 10px;
+      border-radius:10px;
+      font-weight:700;
+      font-size:0.95rem;
+      margin-right:6px;
+    }
+    .proj::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      transition:opacity 300ms ease, transform 300ms ease;
+      border-radius:12px;
+      z-index:0;
+      background:
+        radial-gradient(600px 200px at 10% 10%, rgba(62,224,255,0.06), transparent 8%),
+        radial-gradient(400px 180px at 90% 90%, rgba(138,108,255,0.04), transparent 10%);
+      opacity:1;
+    }
+    .proj:hover{
+      transform:translateY(-8px) scale(1.01);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.6), 0 8px 28px rgba(62,224,255,0.06);
+    }
+
+    .placeholder{
+      display:flex;
+      align-items:center;
+      justify-content:flex-end;
+      color:var(--muted);
+      font-weight:600;
+      font-size:0.95rem;
+      z-index:1;
+      padding:12px;
+    }
+
+    /* Social Card Styles */
+    .sm-links {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      justify-content: flex-start;
+      direction: rtl;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+    .sm-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 18px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--text);
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+      font-weight: 700;
+      font-size: 0.95rem;
+      flex-direction: row-reverse;
+      min-width: 170px;
+    }
+    .sm-link .icon {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      min-height: 40px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 10px;
+    }
+    .sm-link.instagram .icon {
+      background: linear-gradient(135deg, #ff6a88, #ff9a8b);
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(255, 106, 136, 0.15);
+    }
+    .sm-link.facebook .icon {
+      background: linear-gradient(135deg, #1877f2, #3b5998);
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(24, 119, 242, 0.15);
+    }
+    .sm-link.tiktok .icon {
+      background: linear-gradient(135deg, #000000, #25f4ee);
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(37, 244, 238, 0.15);
+    }
+    .sm-link .label {
+      text-align: right;
+      display: block;
+      color: var(--text);
+    }
+    .sm-link .label small {
+      display: block;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.78rem;
+      margin-top: 2px;
+    }
+    .sm-link:hover, .sm-link:focus {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 4px 18px rgba(255, 255, 255, 0.02);
+      background: rgba(255, 255, 255, 0.04);
+      outline: none;
+    }
+
+    /* Footer */
+    footer{
+      margin-top:28px;
+      padding:22px 0;
+      color:var(--muted);
+      font-size:0.92rem;
+      text-align:center;
+      border-top:1px solid var(--border);
+      background:transparent;
+      position:relative;
+    }
+    footer a{ color:var(--muted); text-decoration:none; font-weight:600 }
+    footer a:hover{ color:var(--text); text-decoration:underline }
+
+    /* Responsive */
+    @media (max-width:880px){
+      .skills{ grid-template-columns:1fr; }
+      .hero{ padding:44px 0 24px }
+      nav ul{ display:none }
+      .mobile-toggle{ display:inline-flex; align-items:center; gap:8px }
+      .mobile-nav{
+        display:block;
+        width:100%;
+        position:relative;
+      }
+      .mobile-nav.open{ display:block }
+      .mobile-menu{
+        display:flex;
+        flex-direction:column;
+        gap:8px;
+        margin-top:10px;
+        padding:12px;
+        background:var(--glass);
+        border-radius:10px;
+        border:1px solid var(--border);
+        text-align:right;
+      }
+      .hero{ gap:16px }
+      .hero-inner { align-items:stretch }
+      .placeholder{ justify-content:center }
+      .sm-links{ width:100%; justify-content:flex-start; gap:12px }
+      .sm-link{ width:100%; justify-content:space-between; padding:12px }
+    }
+
+    /* Accessibility focus */
+    a:focus, button:focus { outline: 3px solid rgba(62,224,255,0.12); outline-offset:3px }
+
+    /* Reduced motion preference */
+    @media (prefers-reduced-motion: reduce){
+      *{ transition:none!important; animation:none!important }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav" role="navigation" aria-label="ڕێنمای سەرەکی">
+      <div class="brand">Karo</div>
+
+      <nav aria-label="دەستپێک" class="desktop-nav">
+        <ul>
+          <li><a href="#about">دەربارە</a></li>
+          <li><a href="#skills">تواناکان</a></li>
+          <li><a href="#portfolio">پڕۆژەکان</a></li>
+          <li><a href="#contact">پەیوەندی</a></li>
+          <li><a class="cta-small" href="#portfolio">کارەکانم ببینە</a></li>
+        </ul>
+      </nav>
+
+      <div class="mobile-nav" id="mobileNav">
+        <button class="mobile-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="گۆڕینی ناوبار">
+          ☰
+        </button>
+        <div id="mobileMenu" class="mobile-menu" style="display:none">
+          <a href="#about">دەربارە</a>
+          <a href="#skills">تواناکان</a>
+          <a href="#portfolio">پڕۆژەکان</a>
+          <a href="#contact">پەیوەندی</a>
+          <a class="cta-small" href="#portfolio" style="align-self:flex-start; margin-top:6px">کارەکانم ببینە</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" role="main">
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-inner">
+        <h1 id="hero-heading">پەیوەندی نێوان تەکنەلۆژیا و دیزاینی وێنە</h1>
+        <p class="sub">من خوێندکارى "ئایتیIT"ـم لە زانکۆى زانکۆی پۆلەتەکنیکی سلێمانی؛ کاردەکەم لە دروستکردنی بەرهەمە دیجیتاڵیەکان و میدیا — وە ڕێکخستنی سیستەمەکان تا دیزاینی لۆگۆ (Logo Design) و دەستکاریکردنی ڤیدیۆ (Video Editing)،  وە دروستکردنی ماڵپەڕ (Website Building).</p>
+        <div class="hero-actions">
+          <a class="btn" href="#portfolio">کارەکانم ببینە</a>
+          <a class="btn secondary" href="https://wa.me/9647710781414?text=سڵاو%20کارۆ،%20دەمەوێت%20سەبارەت%20بە%20پڕۆژەیەک%20قسە%20بکەین" target="_blank" rel="noopener">نامە جێ بهێڵە</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" aria-labelledby="about-heading">
+      <div class="card">
+        <h2 id="about-heading" style="margin-top:0">دەربارەی من</h2>
+        <div class="about">
+          <p>
+           من کارۆم؛ خوێندکاری قۆناغی دووەمی بەشی "ئایتیIT"ـم و شارەزاییم هەیە لە دروستکردنی ماڵپەڕ و ڕێکخستنی سیستەم و داتابەیس و تۆڕ (Networking)، وە ئەزموونم هەیە لە بواری دیزاینی دیجیتاڵی، دیزاینی لۆگۆ (Logo Design) و دەستکاریکردنی ڤیدیۆ (Video Editing) بۆ دروستکردنی بەرهەمێکی ڕوون و پڕاکتیکی.
+          </p>
+          <small class="muted"> ئامادەم بۆ کارکردن بە شێوازی فریلانس، هاوبەشکاری، یاخود ئامادەبوون — بەخۆشحاڵیەوە دەتوانم لە پڕۆژەکاندا هاوبەش بم.</small>
+        </div>
+      </div>
+    </section>
+    
+    <section id="skills" aria-labelledby="skills-heading">
+      <h2 id="skills-heading">ماتریکسی تواناکان</h2>
+      <div class="skills" style="margin-top:12px">
+        <div class="skill-column card">
+          <h3>توانای تەکنیکی</h3>
+          <div class="skill-list">
+            <div class="skill">تۆڕسازی (Networking)</div>
+            <div class="skill">پارچەی کۆمپیوتەر (Computer Hardware)</div>
+            <div class="skill">سیستەمی کارکردن (Operating Systems)</div>
+            <div class="skill">لۆجیک و کۆد (Logic & Code)</div>
+          </div>
+        </div>
+
+        <div class="skill-column card">
+          <h3>توانای دروستکردنی</h3>
+          <div class="skill-list">
+            <div class="skill">دروستکردنی ماڵپەڕ (Website Building)</div>
+            <div class="skill">دیزاینی گرافیکی (Graphic Design)</div>
+            <div class="skill">دیزاینی لۆگۆ (Logo Design)</div>
+            <div class="skill">دەستکاریکردنی ڤیدیۆ (Video Editing)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio" aria-labelledby="portfolio-heading">
+      <h2 id="portfolio-heading">نیشاندانی پڕۆژەکان</h2>
+      <p style="color:var(--muted); margin-top:8px; margin-bottom:14px">ئەم جاوازەکان تەنها پلەسەهۆڵدەرن — ئەم تایلانە بە وێنە یان کارتێکی پڕۆژەیی دابنێن.</p>
+
+      <div class="portfolio-grid">
+        <a class="proj" href="#" aria-label="Project 1">
+          <div class="placeholder" style="z-index:1">پڕۆژە 1 — وێبسایت / براندینگ</div>
+          <div class="meta">بەمزووانە</div>
+        </a>
+
+        <a class="proj" href="#" aria-label="Project 2">
+          <div class="placeholder">پڕۆژە 2 — دیزاینی لۆگۆ</div>
+          <div class="meta">بەمزووانە</div>
+        </a>
+
+        <a class="proj" href="#" aria-label="Project 3">
+          <div class="placeholder">پڕۆژە 3 — گرافیک دیزاین</div>
+          <div class="meta">بەمزووانە</div>
+        </a>
+
+        <a class="proj" href="#" aria-label="Project 4">
+          <div class="placeholder">پڕۆژە 4 —  مۆشن گرافیک</div>
+          <div class="meta">بەمزووانە</div>
+        </a>
+
+        <a class="proj" href="#" aria-label="Project 5">
+          <div class="placeholder">پڕۆژە 5 — پلانی سۆشیاڵ میدیا</div>
+          <div class="meta">بەمزووانە</div>
+        </a>
+
+        <a class="proj" href="#" aria-label="Project 6">
+          <div class="placeholder">پڕۆژە 6 — ریڵی ڤیدیۆ</div>
+          <div class="meta">بەمزووانە</div>
+        </a>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-heading">
+      <div class="card" style="display:flex;flex-direction:column;gap:16px">
+        <h2 id="contact-heading" style="margin-top:0">پەیوەندی</h2>
+        <p style="margin:0; color:var(--muted)">من ئامادەم بۆ کارکردن بە شێوازی فریلانس، هاوبەشکاری، یان ئامادەبوون. پەیوەندیم پێوە بکە بۆ گفتوگۆکردن سەبارەت بە پڕۆژەکان و چۆنیەتی هاوبەشیکردن.</p>
+
+        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:4px; justify-content:flex-start">
+          <a class="btn" href="mailto:karobakr.hasan000@gmail.com">ئیمەیڵ بنێرە</a>
+          <a class="btn secondary" href="https://wa.me/9647710781414?text=سڵاو%20کارۆ،%20دەمەوێت%20سەبارەت%20بە%20پڕۆژەیەک%20قسە%20بکەین" target="_blank" rel="noopener">نامە جێ بهێڵە</a>
+        </div>
+
+        <div style="margin-top: 12px;">
+          <p class="desc" style="margin:0; color:var(--muted)">من لەسەر ئەم پلاتفۆرمانە کار و چالاکییەکانم ئەنجام دەدەم — پەیوەندیم پێوە بکە بۆ بینینی کارەکانم.</p>
+        </div>
+
+        <div class="sm-links" role="list" aria-label="سۆشیاڵ میدیا">
+          <a role="listitem" class="sm-link instagram" href="https://www.instagram.com/karob.hasan?igsh=MTViNWhubmVrY3V3OQ==" target="_blank" rel="noopener" aria-label="ئینستاگرام — Karo">
+            <span class="icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5z" stroke="rgba(255,255,255,0.85)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 7.25a4.75 4.75 0 1 0 0 9.5 4.75 4.75 0 0 0 0-9.5z" stroke="rgba(255,255,255,0.95)" stroke-width="1.2"/>
+                <circle cx="17.5" cy="6.5" r="0.6" fill="rgba(255,255,255,0.95)"/>
+              </svg>
+            </span>
+            <span class="label">ئینستاگرام <small>Instagram</small></span>
+          </a>
+
+          <a role="listitem" class="sm-link facebook" href="https://www.facebook.com/share/18TjxfWVyp/" target="_blank" rel="noopener" aria-label="فەیسبووک — Karo">
+            <span class="icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" fill="rgba(255,255,255,0.95)"/>
+              </svg>
+            </span>
+            <span class="label">فەیسبووک <small>Facebook</small></span>
+          </a>
+
+          <a role="listitem" class="sm-link tiktok" href="https://vt.tiktok.com/ZSQWmtr39/" target="_blank" rel="noopener" aria-label="تیکتۆک — Karo">
+            <span class="icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12.525.02c1.31 0 2.57.37 3.66 1.05.04.03.07.08.07.13v3.7c0 .06-.03.11-.08.13a6.83 6.83 0 0 1-3.65-.91v10.17c0 4.02-3.27 7.29-7.3 7.29A7.3 7.3 0 0 1-1.4 14.3a7.3 7.3 0 0 1 7.29-7.29c.47 0 .93.05 1.38.13.06.01.11-.02.13-.08V10.8c0-.05-.03-.1-.08-.12a10.8 10.8 0 0 0-1.43-.1c-2.45 0-4.44 1.99-4.44 4.44a4.44 4.44 0 0 0 4.44 4.44c2.45 0 4.44-1.99 4.44-4.44V0c0-.05.04-.1.09-.1h3.76z" fill="rgba(255,255,255,0.95)"/>
+              </svg>
+            </span>
+            <span class="label">تیکتۆک <small>TikTok</small></span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex;flex-direction:column;gap:8px;align-items:center;justify-content:center; text-align:center">
+      <div>© <span id="year"></span> Karo — پەیوەندی نێوان تەکنەلۆژیا و دیزاینی وێنە.</div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const navToggle = document.getElementById('navToggle');
+      const mobileMenu = document.getElementById('mobileMenu');
+      navToggle && navToggle.addEventListener('click', () => {
+        const isOpen = mobileMenu.style.display === 'block';
+        mobileMenu.style.display = isOpen ? 'none' : 'block';
+        navToggle.setAttribute('aria-expanded', String(!isOpen));
+      });
+
+      mobileMenu && mobileMenu.addEventListener('click', (e) => {
+        if(e.target.tagName === 'A'){
+          mobileMenu.style.display = 'none';
+          navToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      const y = new Date().getFullYear();
+      document.getElementById('year').textContent = y;
+    })();
+  </script>
+</body>
+</html>
