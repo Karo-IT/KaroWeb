@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal Website of Karo - IT & Computer Science Student, Tech Content Creator, and Digital Builder.">
+    <meta name="keywords" content="Karo, IT Student, Computer Science, Tech Creator, Digital Builder, Web Development, Networking, Video Editing, Social Media Management">
+    <meta name="author" content="Karo">
+
+    <title>Karo | IT Student • Tech Creator • Digital Builder</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <!-- Interactive Background Particle Canvas -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Ambient Ambient Glow Orbs -->
+    <div class="glow-orb orb-cyan"></div>
+    <div class="glow-orb orb-purple"></div>
+    <div class="glow-orb orb-emerald"></div>
+
+    <!-- Header Navigation -->
+    <header class="navbar-container">
+        <nav class="navbar glass-card">
+            <a href="#" class="nav-brand">
+                <div class="brand-badge">K</div>
+                <span class="brand-name">Karo<span class="brand-dot">.</span>IT</span>
+            </a>
+
+            <div class="nav-menu" id="nav-menu">
+                <a href="#hero" class="nav-link"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="#about" class="nav-link"><i class="fa-solid fa-user-astronaut"></i> About</a>
+                <a href="#skills" class="nav-link"><i class="fa-solid fa-layer-group"></i> Skill Matrix</a>
+                <a href="#works" class="nav-link"><i class="fa-solid fa-cubes"></i> Featured Works</a>
+                <a href="#contact" class="nav-link"><i class="fa-solid fa-paper-plane"></i> Contact</a>
+                <div class="mobile-nav-cta show-mobile">
+                    <a href="#contact" class="btn btn-sm btn-primary btn-glow btn-block">
+                        <i class="fa-solid fa-bolt"></i> Get in Touch
+                    </a>
+                </div>
+            </div>
+
+            <div class="nav-actions">
+                <div class="status-pill hide-mobile">
+                    <span class="pulse-dot"></span>
+                    <span>Building & Creating</span>
+                </div>
+                <a href="#contact" class="btn btn-sm btn-primary btn-glow hide-mobile">
+                    <i class="fa-solid fa-bolt"></i> Get in Touch
+                </a>
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-content">
+
+        <!-- HERO HEADER SECTION -->
+        <section class="hero-section" id="hero">
+            <div class="hero-grid">
+                <div class="hero-text-col">
+                    <div class="pill-tag">
+                        <i class="fa-solid fa-microchip"></i>
+                        <span>Tech-Focused • Digital Innovation</span>
+                    </div>
+
+                    <h1 class="hero-title">
+                        Hi, I'm <span class="gradient-text-cyan">Karo</span>
+                    </h1>
+
+                    <div class="typewriter-box">
+                        <span class="term-symbol">&gt; </span>
+                        <span id="typewriter-text" class="typewriter-text"></span>
+                        <span class="typewriter-cursor">|</span>
+                    </div>
+
+                    <p class="hero-description">
+                        An <strong>IT Student</strong>, <strong>Tech Content Creator</strong>, and <strong>Digital Builder</strong>. 
+                        I bridge technical systems engineering, network infrastructure, and computer logic with modern web architecture and creative digital media production.
+                    </p>
+
+                    <div class="hero-cta-group">
+                        <a href="#works" class="btn btn-lg btn-primary btn-glow">
+                            <i class="fa-solid fa-compass"></i> Explore Work
+                        </a>
+                        <a href="#contact" class="btn btn-lg btn-glass">
+                            <i class="fa-solid fa-paper-plane"></i> Get in Touch
+                        </a>
+                    </div>
+
+                    <div class="hero-quick-stats">
+                        <div class="q-stat">
+                            <span class="q-num gradient-text-cyan">IT</span>
+                            <span class="q-label">Systems & Logic</span>
+                        </div>
+                        <div class="q-divider"></div>
+                        <div class="q-stat">
+                            <span class="q-num gradient-text-purple">Creator</span>
+                            <span class="q-label">Media & Reels</span>
+                        </div>
+                        <div class="q-divider"></div>
+                        <div class="q-stat">
+                            <span class="q-num gradient-text-emerald">Builder</span>
+                            <span class="q-label">Web & Strategy</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-visual-col">
+                    <div class="hero-card-3d glass-card-interactive" id="hero-card">
+                        <div class="card-glow-border"></div>
+                        <div class="card-bar">
+                            <div class="bar-dots">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="bar-title">karo_profile.json</span>
+                            <span class="bar-status"><i class="fa-solid fa-circle"></i> Active</span>
+                        </div>
+
+                        <div class="hero-avatar-area">
+                            <img src="assets/images/karo_profile_2.jpg" alt="Karo Brand Avatar" class="avatar-img">
+                            <div class="avatar-glow-ring"></div>
+                        </div>
+
+                        <div class="json-code-block">
+<pre><code class="language-json">{
+  <span class="json-key">"name"</span>: <span class="json-string">"Karo"</span>,
+  <span class="json-key">"role"</span>: <span class="json-string">"IT Student &amp; Digital Builder"</span>,
+  <span class="json-key">"foundations"</span>: [<span class="json-string">"Logic &amp; Coding"</span>, <span class="json-string">"Networking"</span>, <span class="json-string">"OS"</span>],
+  <span class="json-key">"production"</span>: [<span class="json-string">"Web Development"</span>, <span class="json-string">"Video Reels"</span>],
+  <span class="json-key">"status"</span>: <span class="json-string">"Ready for Collaborations 🚀"</span>
+}</code></pre>
+                        </div>
+
+                        <div class="card-foot-row">
+                            <span class="foot-badge"><i class="fa-solid fa-code-branch"></i> v3.0 Main</span>
+                            <span class="foot-badge"><i class="fa-solid fa-signal"></i> Network Ready</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section class="section-container" id="about">
+            <div class="section-header">
+                <span class="section-subtitle"><i class="fa-solid fa-compass"></i> Vision & Synergy</span>
+                <h2 class="section-title">Bridging <span class="gradient-text-cyan">IT Systems</span> & <span class="gradient-text-purple">Creative Media</span></h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="about-grid">
+                <div class="glass-card about-intro-card">
+                    <div class="about-icon-header">
+                        <div class="icon-box box-cyan"><i class="fa-solid fa-laptop-code"></i></div>
+                        <div>
+                            <h3>Technical Systems Meets Creative Design</h3>
+                            <p class="text-muted">A dual-threat approach to digital engineering</p>
+                        </div>
+                    </div>
+                    
+                    <p class="about-text">
+                        As an <strong>IT Student</strong>, I specialize in understanding how hardware, operating systems, and computer networks interact under the hood. At the same time, as a <strong>Tech Content Creator & Digital Builder</strong>, I craft engaging web experiences, educational short-form media reels, and high-impact digital content.
+                    </p>
+
+                    <div class="about-pillars-grid">
+                        <div class="pillar-item">
+                            <div class="pillar-icon"><i class="fa-solid fa-network-wired"></i></div>
+                            <h4>Technical & Systems</h4>
+                            <p>Network setup, operating systems administration, hardware diagnostics, and core programming logic.</p>
+                        </div>
+                        <div class="pillar-item">
+                            <div class="pillar-icon"><i class="fa-solid fa-photo-film"></i></div>
+                            <h4>Creative Production</h4>
+                            <p>Modern responsive site building, digital media storytelling, short-form video editing, and social growth strategy.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILL MATRIX SECTION (CATEGORIZED) -->
+        <section class="section-container" id="skills">
+            <div class="section-header">
+                <span class="section-subtitle"><i class="fa-solid fa-layer-group"></i> Core Capabilities</span>
+                <h2 class="section-title">Categorized <span class="gradient-text-purple">Skill Matrix</span></h2>
+                <div class="section-line"></div>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="filter-tabs-container">
+                <button class="filter-btn active" data-filter="all">
+                    <i class="fa-solid fa-border-all"></i> All Skills
+                </button>
+                <button class="filter-btn" data-filter="tech">
+                    <i class="fa-solid fa-server"></i> Technical & Systems Foundation
+                </button>
+                <button class="filter-btn" data-filter="creative">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Creative & Web Production
+                </button>
+            </div>
+
+            <!-- Skill Cards Grid -->
+            <div class="skills-grid" id="skills-grid">
+                <!-- Skill 1: Logic & Coding -->
+                <div class="glass-card skill-card" data-category="tech">
+                    <div class="skill-icon-box box-cyan">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <div class="skill-content">
+                        <div class="skill-top">
+                            <h4>Logic & Coding</h4>
+                            <span class="skill-badge badge-tech">Foundation</span>
+                        </div>
+                        <p class="skill-desc">Core programming logic, algorithmic problem solving, structural code architecture, and software fundamentals.</p>
+                        <div class="skill-tags">
+                            <span>Algorithms</span><span>Problem Solving</span><span>Software Fundamentals</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill 2: Computer Networking -->
+                <div class="glass-card skill-card" data-category="tech">
+                    <div class="skill-icon-box box-blue">
+                        <i class="fa-solid fa-network-wired"></i>
+                    </div>
+                    <div class="skill-content">
+                        <div class="skill-top">
+                            <h4>Networking</h4>
+                            <span class="skill-badge badge-tech">Infrastructure</span>
+                        </div>
+                        <p class="skill-desc">Computer network setup, TCP/IP protocols, IP addressing/subnetting, routers, switches, and infrastructure concepts.</p>
+                        <div class="skill-tags">
+                            <span>TCP/IP</span><span>Subnetting</span><span>Network Setup</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill 3: Operating Systems -->
+                <div class="glass-card skill-card" data-category="tech">
+                    <div class="skill-icon-box box-emerald">
+                        <i class="fa-solid fa-terminal"></i>
+                    </div>
+                    <div class="skill-content">
+                        <div class="skill-top">
+                            <h4>Operating Systems</h4>
+                            <span class="skill-badge badge-tech">Systems</span>
+                        </div>
+                        <p class="skill-desc">OS administration, system configuration, CLI management, process scheduling, and software environment optimization.</p>
+                        <div class="skill-tags">
+                            <span>OS Admin</span><span>CLI & Configuration</span><span>System Optimization</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill 4: Computer Hardware -->
+                <div class="glass-card skill-card" data-category="tech">
+                    <div class="skill-icon-box box-orange">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <div class="skill-content">
+                        <div class="skill-top">
+                            <h4>Computer Hardware</h4>
+                            <span class="skill-badge badge-tech">Hardware</span>
+                        </div>
+                        <p class="skill-desc">Hardware components analysis, PC assembly, diagnostic testing, maintenance, and hardware troubleshooting.</p>
+                        <div class="skill-tags">
+                            <span>Hardware Assembly</span><span>Diagnostics</span><span>Troubleshooting</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill 5: Social Media Management -->
+                <div class="glass-card skill-card" data-category="tech">
+                    <div class="skill-icon-box box-pink">
+                        <i class="fa-solid fa-bullhorn"></i>
+                    </div>
+                    <div class="skill-content">
+                        <div class="skill-top">
+                            <h4>Social Media Management</h4>
+                            <span class="skill-badge badge-tech">Strategy</span>
+                        </div>
+                        <p class="skill-desc">Platform growth strategy, audience analytics, digital community engagement, and multi-channel content management.</p>
+                        <div class="skill-tags">
+                            <span>Strategy</span><span>Community</span><span>Platform Management</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill 6: Website Building -->
+                <div class="glass-card skill-card" data-category="creative">
+                    <div class="skill-icon-box box-purple">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+                    <div class="skill-content">
+                        <div class="skill-top">
+                            <h4>Website Building</h4>
+                            <span class="skill-badge badge-creative">Production</span>
+                        </div>
+                        <p class="skill-desc">Modern web development, responsive UI design, glassmorphism layouts, custom site deployment, and web UX.</p>
+                        <div class="skill-tags">
+                            <span>Responsive Web</span><span>Glassmorphism</span><span>Site Deployment</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill 7: Content Creation -->
+                <div class="glass-card skill-card" data-category="creative">
+                    <div class="skill-icon-box box-red">
+                        <i class="fa-solid fa-pen-nib"></i>
+                    </div>
+                    <div class="skill-content">
+                        <div class="skill-top">
+                            <h4>Content Creation</h4>
+                            <span class="skill-badge badge-creative">Media</span>
+                        </div>
+                        <p class="skill-desc">Educational and tech-focused content production, digital graphic design, social media assets, and technical writing.</p>
+                        <div class="skill-tags">
+                            <span>Tech Content</span><span>Digital Graphics</span><span>Educational Media</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill 8: Video Editing -->
+                <div class="glass-card skill-card" data-category="creative">
+                    <div class="skill-icon-box box-yellow">
+                        <i class="fa-solid fa-video"></i>
+                    </div>
+                    <div class="skill-content">
+                        <div class="skill-top">
+                            <h4>Video Editing</h4>
+                            <span class="skill-badge badge-creative">Reels</span>
+                        </div>
+                        <p class="skill-desc">Short-form video editing, Instagram/TikTok reels, motion graphics, audio sync, and digital media production.</p>
+                        <div class="skill-tags">
+                            <span>Short-Form Video</span><span>Reels Editing</span><span>Motion Media</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURED WORKS & SHOWCASE SECTION -->
+        <section class="section-container" id="works">
+            <div class="section-header">
+                <span class="section-subtitle"><i class="fa-solid fa-cubes"></i> Portfolio Showcase</span>
+                <h2 class="section-title">Featured <span class="gradient-text-emerald">Works & Projects</span></h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="works-grid">
+                <!-- Slot 1: Websites & Branding -->
+                <div class="glass-card work-card">
+                    <div class="work-img-wrapper gallery-trigger" data-img="assets/images/website_branding.png" data-title="Websites & Branding Showcase">
+                        <img src="assets/images/website_branding.png" alt="Websites & Branding Showcase">
+                        <div class="work-overlay">
+                            <span class="work-cat-tag"><i class="fa-solid fa-laptop-code"></i> Websites & Branding</span>
+                            <button class="btn btn-sm btn-glow"><i class="fa-solid fa-magnifying-glass-plus"></i> View Full Build</button>
+                        </div>
+                    </div>
+                    <div class="work-body">
+                        <h3 class="work-title">Websites & Branding Builds</h3>
+                        <p class="work-desc">
+                            High-performance responsive websites, dark mode glass UI applications, and modern brand design assets crafted for digital platforms.
+                        </p>
+                        <div class="work-tags">
+                            <span>Responsive Web</span><span>Glassmorphism</span><span>Brand Architecture</span>
+                        </div>
+                        <div class="work-actions">
+                            <button class="btn btn-sm btn-glass gallery-trigger-btn" data-img="assets/images/website_branding.png" data-title="Websites & Branding Showcase">
+                                <i class="fa-solid fa-expand"></i> Open Lightbox
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slot 2: Social Media Projects -->
+                <div class="glass-card work-card">
+                    <div class="work-img-wrapper gallery-trigger" data-img="assets/images/social_media.png" data-title="Social Media Projects & Strategy">
+                        <img src="assets/images/social_media.png" alt="Social Media Projects">
+                        <div class="work-overlay">
+                            <span class="work-cat-tag"><i class="fa-solid fa-bullhorn"></i> Social Media & Campaign</span>
+                            <button class="btn btn-sm btn-glow"><i class="fa-solid fa-magnifying-glass-plus"></i> View Analytics</button>
+                        </div>
+                    </div>
+                    <div class="work-body">
+                        <h3 class="work-title">Social Media Projects & Strategy</h3>
+                        <p class="work-desc">
+                            Digital campaign execution, channel growth management, audience engagement analytics, and tech content distribution strategy.
+                        </p>
+                        <div class="work-tags">
+                            <span>Growth Strategy</span><span>Community</span><span>Content Distribution</span>
+                        </div>
+                        <div class="work-actions">
+                            <button class="btn btn-sm btn-glass gallery-trigger-btn" data-img="assets/images/social_media.png" data-title="Social Media Projects & Strategy">
+                                <i class="fa-solid fa-expand"></i> Open Lightbox
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slot 3: Video & Media Reels -->
+                <div class="glass-card work-card">
+                    <div class="work-img-wrapper gallery-trigger" data-img="assets/images/video_reels.png" data-title="Short-Form Video & Tech Media Reels">
+                        <img src="assets/images/video_reels.png" alt="Video & Media Reels">
+                        <div class="work-overlay">
+                            <span class="work-cat-tag"><i class="fa-solid fa-film"></i> Video & Reels Media</span>
+                            <button class="btn btn-sm btn-glow"><i class="fa-solid fa-magnifying-glass-plus"></i> View Editing Suite</button>
+                        </div>
+                    </div>
+                    <div class="work-body">
+                        <h3 class="work-title">Video & Media Reels Gallery</h3>
+                        <p class="work-desc">
+                            Engaging short-form tech reels, educational video edits, motion graphic transitions, and high-quality video post-production.
+                        </p>
+                        <div class="work-tags">
+                            <span>Short-Form Video</span><span>Tech Reels</span><span>Post-Production</span>
+                        </div>
+                        <div class="work-actions">
+                            <button class="btn btn-sm btn-glass gallery-trigger-btn" data-img="assets/images/video_reels.png" data-title="Short-Form Video & Tech Media Reels">
+                                <i class="fa-solid fa-expand"></i> Open Lightbox
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section class="section-container" id="contact">
+            <div class="section-header">
+                <span class="section-subtitle"><i class="fa-solid fa-paper-plane"></i> Get In Touch</span>
+                <h2 class="section-title">Let's <span class="gradient-text-cyan">Connect & Build</span></h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Info Column -->
+                <div class="contact-info-col">
+                    <div class="glass-card c-info-card">
+                        <div class="c-icon icon-cyan"><i class="fa-solid fa-envelope"></i></div>
+                        <div>
+                            <h4>Email Contact</h4>
+                            <p class="c-val">karobakr.hasan000@gmail.com</p>
+                            <button class="btn btn-xs btn-outline-cyan" id="copy-email-btn">
+                                <i class="fa-regular fa-copy"></i> Copy Email
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="glass-card c-info-card">
+                        <div class="c-icon icon-purple"><i class="fa-solid fa-language"></i></div>
+                        <div>
+                            <h4>Language Capabilities</h4>
+                            <div class="lang-badges">
+                                <span class="lang-pill">English (B2)</span>
+                                <span class="lang-pill">Kurdish (Native)</span>
+                                <span class="lang-pill">Arabic (A2)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card c-info-card">
+                        <div class="c-icon icon-emerald"><i class="fa-solid fa-share-nodes"></i></div>
+                        <div>
+                            <h4>Social Media Platforms</h4>
+                            <div class="social-icons">
+                                <a href="https://www.facebook.com/share/1FArAiQQY7/" target="_blank" class="social-btn" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="https://www.instagram.com/karob.hasan?igsh=MTViNWhubmVrY3V3OQ==" target="_blank" class="social-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="https://wa.me/9" target="_blank" class="social-btn" title="Whatapp"><i class="fa-brands fa-whatsapp"></i></a>
+                                <a href="https://t.me/KaroBakr" target="_blank" class="social-btn" title="Telegram"><i class="fa-brands fa-telegram"></i></a>
+                                <a href="https://www.linkedin.com/in/karo-b-hasan" target="_blank" class="social-btn" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Column -->
+                <div class="glass-card contact-form-card">
+                    <form id="contact-form" class="contact-form">
+                        <h3 class="form-title">Send a Direct Message</h3>
+
+                        <div class="form-group">
+                            <label for="name" class="form-label">Name</label>
+                            <div class="input-wrap">
+                                <i class="fa-regular fa-user input-icon"></i>
+                                <input type="text" id="name" name="name" class="form-input" placeholder="Your Full Name" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address</label>
+                            <div class="input-wrap">
+                                <i class="fa-regular fa-envelope input-icon"></i>
+                                <input type="email" id="email" name="email" class="form-input" placeholder="name@domain.com" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="interest" class="form-label">Collaboration Area</label>
+                            <div class="input-wrap">
+                                <i class="fa-solid fa-sliders input-icon"></i>
+                                <select id="interest" name="interest" class="form-input">
+                                    <option value="Website Building">Website Building & Web Design</option>
+                                    <option value="Content & Reels">Content Creation & Video Editing</option>
+                                    <option value="Networking & IT">IT & Network Setup</option>
+                                    <option value="Social Strategy">Social Media Strategy</option>
+                                    <option value="Other">General Discussion</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message</label>
+                            <div class="input-wrap">
+                                <textarea id="message" name="message" class="form-input form-textarea" rows="4" placeholder="Hello Karo, I'd like to collaborate on..." required></textarea>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-lg btn-primary btn-glow btn-block" id="form-submit-btn">
+                            <i class="fa-solid fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer-container glass-card">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="brand-badge">K</div>
+                <span class="footer-name">Karo</span>
+            </div>
+            <p class="footer-copy">&copy; <span id="current-year">2026</span> Karo • IT Student, Tech Creator &amp; Digital Builder</p>
+            <button id="back-to-top" class="back-to-top-btn" title="Back to Top">
+                <i class="fa-solid fa-arrow-up"></i>
+            </button>
+        </div>
+    </footer>
+
+    <!-- LIGHTBOX MODAL -->
+    <div class="lightbox-modal" id="lightbox-modal">
+        <div class="lightbox-backdrop"></div>
+        <div class="lightbox-content glass-card">
+            <button class="lightbox-close" id="lightbox-close"><i class="fa-solid fa-xmark"></i></button>
+            <div class="lightbox-img-wrap">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E" id="lightbox-img" alt="Work Showcase Asset">
+            </div>
+            <div class="lightbox-caption">
+                <h4 id="lightbox-title">Work Asset</h4>
+                <p class="text-muted">Designed &amp; Developed by Karo</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST CONTAINER -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Script File -->
+    <script src="script.js"></script>
+</body>
+</html>
